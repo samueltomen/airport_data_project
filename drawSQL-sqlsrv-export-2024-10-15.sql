@@ -1,5 +1,5 @@
-CREATE TABLE "Planes"(
-    "id" INT NOT NULL,
+CREATE TABLE "plane"(
+    "id" INT NOT NULL IDENTITY(1,1),
     "tailnum" VARCHAR(255) NOT NULL,
     "year" INT NOT NULL,
     "type" VARCHAR(255) NOT NULL,
@@ -7,13 +7,13 @@ CREATE TABLE "Planes"(
     "model" VARCHAR(255) NOT NULL,
     "engines" INT NOT NULL,
     "seats" INT NOT NULL,
-    "speed" INT NOT NULL,
+    "speed" INT,
     "engine" VARCHAR(255) NOT NULL
 );
 ALTER TABLE
-    "Planes" ADD CONSTRAINT "planes_id_primary" PRIMARY KEY("id");
-CREATE TABLE "Weather"(
-    "id" INT NOT NULL,
+    "plane" ADD CONSTRAINT "planes_id_primary" PRIMARY KEY("id");
+CREATE TABLE "weather"(
+    "id" INT NOT NULL IDENTITY(1,1),
     "origin" VARCHAR(255) NOT NULL,
     "year" INT NOT NULL,
     "month" INT NOT NULL,
@@ -28,18 +28,18 @@ CREATE TABLE "Weather"(
     "precip" FLOAT(53) NOT NULL,
     "pressure" FLOAT(53) NOT NULL,
     "visib" FLOAT(53) NOT NULL,
-    "time_hour" TIMESTAMP NOT NULL
+    "time_hour" DATETIME2 NOT NULL
 );
 ALTER TABLE
-    "Weather" ADD CONSTRAINT "weather_id_primary" PRIMARY KEY("id");
-CREATE TABLE "AIrlines"(
+    "weather" ADD CONSTRAINT "weather_id_primary" PRIMARY KEY("id");
+CREATE TABLE "airline"(
     "carrier" CHAR(255) NOT NULL,
     "name" CHAR(255) NOT NULL
 );
 ALTER TABLE
-    "AIrlines" ADD CONSTRAINT "airlines_carrier_primary" PRIMARY KEY("carrier");
-CREATE TABLE "Airports"(
-    "id" BIGINT NOT NULL,
+    "airline" ADD CONSTRAINT "airlines_carrier_primary" PRIMARY KEY("carrier");
+CREATE TABLE "airport"(
+    "id" INT NOT NULL IDENTITY(1,1),
     "faa" VARCHAR(255) NOT NULL,
     "name" VARCHAR(255) NOT NULL,
     "lat" FLOAT(53) NOT NULL,
@@ -50,9 +50,9 @@ CREATE TABLE "Airports"(
     "tzone" VARCHAR(255) NOT NULL
 );
 ALTER TABLE
-    "Airports" ADD CONSTRAINT "airports_id_primary" PRIMARY KEY("id");
-CREATE TABLE "Flights"(
-    "id" INT NOT NULL,
+    "airport" ADD CONSTRAINT "airports_id_primary" PRIMARY KEY("id");
+CREATE TABLE "flight"(
+    "id" INT NOT NULL IDENTITY(1,1),
     "year" INT NOT NULL,
     "month" INT NOT NULL,
     "day" INT NOT NULL,
@@ -71,8 +71,7 @@ CREATE TABLE "Flights"(
     "distance" INT NOT NULL,
     "hour" INT NOT NULL,
     "minute" INT NOT NULL,
-    "time_hour" TIMESTAMP NOT NULL,
-    "plane_id" INT NOT NULL
+    "time_hour" TIMESTAMP NOT NULL
 );
 ALTER TABLE
-    "Flights" ADD CONSTRAINT "flights_id_primary" PRIMARY KEY("id");
+    "flight" ADD CONSTRAINT "flights_id_primary" PRIMARY KEY("id");
