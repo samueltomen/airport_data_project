@@ -27,7 +27,7 @@ CREATE TABLE "weather"(
     "precip" FLOAT(53) NOT NULL,
     "pressure" FLOAT(53) NOT NULL,
     "visib" FLOAT(53) NOT NULL,
-    "time_hour" TIMESTAMP NOT NULL
+    "time_hour" DATETIME2 NOT NULL
 );
 ALTER TABLE
     "weather" ADD CONSTRAINT "weather_id_primary" PRIMARY KEY("id");
@@ -69,7 +69,7 @@ CREATE TABLE "flight"(
      "distance" INT NOT NULL,
      "hour" INT NOT NULL,
      "minute" INT NOT NULL,
-     "time_hour" TIMESTAMP NOT NULL
+     "time_hour" DATETIME2 NOT NULL
 );
 ALTER TABLE
     "flight" ADD CONSTRAINT "flights_id_primary" PRIMARY KEY("id");
